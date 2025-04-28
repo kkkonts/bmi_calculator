@@ -27,6 +27,15 @@ def get_bmi_recommendation(bmi):
         return "Рекомендуется увеличить физическую активность и скорректировать питание"
 
 
+
+def calculate_daily_calories(weight, height, age, gender, activity_level=1.2):
+    """Формула Миффлина-Сан Жеора"""
+    if gender.lower() == 'male':
+        bmr = 10 * weight + 6.25 * (height * 100) - 5 * age + 5
+    else:
+        bmr = 10 * weight + 6.25 * (height * 100) - 5 * age - 161
+    return bmr * activity_level
+
 def validate_input(value, min_val, max_val):
     try:
         num = float(value)
@@ -68,12 +77,14 @@ def main():
 
     # Расчеты
     bmi = calculate_bmi(weight, height)
+    calories = calculate_daily_calories(weight, height, age, gender)
 
     # Вывод результатов
     print("\n=== Результаты ===")
     print(f"Ваш BMI: {bmi:.1f}")
     print(f"Категория: {get_detailed_bmi_analysis(bmi)}")
     print(f"Рекомендации: {get_bmi_recommendation(bmi)}")
+    print(f"Суточная норма калорий: {calories:.0f} ккал")
 
 if __name__ == "__main__":
     main()
