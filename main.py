@@ -36,6 +36,15 @@ def validate_input(value, min_val, max_val):
     except ValueError:
         return False
 
+def calculate_ideal_weight(height, gender='unisex'):
+    """По формуле Devine (1974)"""
+    if gender.lower() == 'male':
+        return 50 + 2.3 * ((height * 100) - 152.4) / 2.54
+    elif gender.lower() == 'female':
+        return 45.5 + 2.3 * ((height * 100) - 152.4) / 2.54
+    else:
+        return (50 + 45.5) / 2 + 2.3 * ((height * 100) - 152.4) / 2.54
+
 
 def main():
     print("=== BMI Калькулятор ===")
@@ -69,12 +78,14 @@ def main():
 
     # Расчеты
     bmi = calculate_bmi(weight, height)
+    ideal_weight = calculate_ideal_weight(height, gender)
 
     # Вывод результатов
     print("\n=== Результаты ===")
     print(f"Ваш BMI: {bmi:.1f}")
     print(f"Категория: {get_detailed_bmi_analysis(bmi)}")
     print(f"Рекомендации: {get_bmi_recommendation(bmi)}")
+    print(f"Идеальный вес: {ideal_weight:.1f} кг")
 
 
 if __name__ == "__main__":
