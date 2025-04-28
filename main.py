@@ -36,7 +36,6 @@ def calculate_daily_calories(weight, height, age, gender, activity_level=1.2):
         bmr = 10 * weight + 6.25 * (height * 100) - 5 * age - 161
     return bmr * activity_level
 
-
 def validate_input(value, min_val, max_val):
     try:
         num = float(value)
@@ -90,4 +89,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-VERSION = "1.0"
+VERSION = "2.0"
