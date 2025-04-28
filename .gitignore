@@ -93,7 +93,10 @@ ENV/
 
 
 # self added
-__pycache__/*
+__pycache__/
+*.py[cod]
+*\$py.class
+.Python
 .idea/*
 data/movie/kg.txt
 data/music/*
