@@ -88,6 +88,11 @@ def main():
     print(f"Рекомендации: {get_bmi_recommendation(bmi)}")
     print(f"Идеальный вес: {ideal_weight:.1f} кг")
 
+    if ideal_weight - weight > 0:
+        print(f"→ Вам нужно набрать {ideal_weight - weight :.1f} кг до идеального веса")
+    else:
+        print(f"→ Вам нужно сбросить {weight - ideal_weight:.1f} кгдо идеального веса")
+
 
 if __name__ == "__main__":
     main()
